@@ -1,0 +1,24 @@
+body{
+    background-color: black;
+    color: white;
+}
+#clock{
+
+    background-color: orange;
+}
+
+.center{
+   height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  flex-direction: column;
+}
+
+#clock{
+    font-size: 40px;
+    background-color: orange;
+    padding: 20px 50px;
+    margin: 10px;
+    border-radius: 10px;
+}
