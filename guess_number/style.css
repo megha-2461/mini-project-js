@@ -1,0 +1,25 @@
+h1{
+    background-color: black;
+    color: white;
+}
+
+body{
+    background-color: gray;
+    color: white;
+    text-align: center;
+}
+
+input[type="submit"]{
+    display: flex;
+    margin-top: 40px;
+    margin-left: 690px;
+    width: 148px;
+    background-color: black;
+    color: white ;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.resultpara{
+    margin-left: 105px;
+}
