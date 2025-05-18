@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+
+        #usr{
+            padding: 5px;
+        }
+        button{
+            align-items: center;
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Github username</h1>
+    <label for="usr"><strong>Github username:</strong></label>
+    <input type="text" id="usr" placeholder="Enter your username">
+    <br>
+    <button onclick=githubData() type="submit" placeholder="submit" id="subt">Submit</button>
+    <div class="profile">
+        <!-- profile here -->
+    </div>
+</body>
+<script>
+    function githubData(){
+    let usrname=document.getElementById('usr').value
+  
+    const profile=document.querySelector('.profile')
+      if (!usrname){
+          profile.innerHTML = `<p style="color: white;">Please enter a username</p>`;
+          return;
+    }
+    const xhr= new XMLHttpRequest;
+    const usrurl="https://api.github.com/users/" +  usrname;
+    xhr.open('GET', usrurl)
+    xhr.onload=function(){
+          if (xhr.status===200){
+  var data=JSON.parse(this.responseText)
+  profile.innerHTML=`
+  <img src="${data.avatar_url}"/>
+   <p><strong>Username:</strong> ${data.login}</p>
+            <p><strong>Followers:</strong> ${data.followers}</p>
+            <p><strong>Number of Public Repositories:</strong> ${data.public_repos}</p>
+            <p><strong>Your Github account was created on:</strong> ${data.created_at}</p>
+  `
+  console.log(data)
+        }
+        else {
+          profile.innerHTML = `<p style="color: red;">Error: User not found.</p>`;
+        }
+    }
+    xhr.send();
+}
+</script>
+</html>
